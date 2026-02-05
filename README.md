@@ -4,7 +4,7 @@ Automated duplicate detection for customer/shop records using geospatial proximi
 
 ---
 
-## 📥 Required Input Columns
+## Required Input Columns
 
 | Column | Required | Description | Format Notes |
 |--------|----------|-------------|--------------|
@@ -13,11 +13,11 @@ Automated duplicate detection for customer/shop records using geospatial proximi
 | `Prospect Code` | ✅ Yes | Security classification field | Non-blank = **Secured**<br>Blank/NaN = **Unsecured** |
 | GPS Data | ✅ Yes | Location coordinates | **Option A:** Separate `Latitude` + `Longitude` columns<br>**Option B:** Combined column named `Mapping Coordinates`, `GPS`, `Location`, or `Coordinates` (e.g., `"11.5624, 104.9160"`) |
 
-> ⚠️ **Critical**: All GPS values must be numeric decimals. Script auto-extracts from combined formats but fails if coordinates are missing/invalid.
+> **Critical**: All GPS values must be numeric decimals. Script auto-extracts from combined formats but fails if coordinates are missing/invalid.
 
 ---
 
-## ⚙️ Core Detection Logic
+## Core Detection Logic
 
 ### Step 1: Classification
 - **Secured shops**: `Prospect Code` populated (non-blank)
@@ -39,7 +39,7 @@ Automated duplicate detection for customer/shop records using geospatial proximi
 
 ---
 
-## 📤 Output Structure (`duplicate_analysis_*.xlsx`)
+## Output Structure (`duplicate_analysis_*.xlsx`)
 
 | Column Group | Fields | Purpose |
 |--------------|--------|---------|
@@ -55,13 +55,14 @@ Automated duplicate detection for customer/shop records using geospatial proximi
 
 ---
 
-## 📊 Expected Result Example
+## Expected Result Example
 
 | Customer ID A | Shop Name A | Customer ID B | Shop Name B | Distance (km) | Comparison Type |
 |---------------|-------------|---------------|-------------|---------------|-----------------|
 | CUS-1001 | ហាងកាហ្វេភ្នំពេញ | CUS-2045 | កាហ្វេភ្នំពេញ | 0.042 | Secured vs Secured |
 | CUS-3089 | ABC Mart #2 | CUS-4112 | ABC Mart | 0.087 | Unsecured vs Secured |
 
-> 🔍 **Interpretation**:  
+> **Interpretation**:  
 > - Pair 1: Khmer names share substring `"កាហ្វេភ្នំពេញ"` at 42m distance → **high-confidence duplicate**  
 > - Pair 2: English names share `"ABC Mart"` at 87m distance → **requires manual verification** (could be legitimate nearby branches)
+
