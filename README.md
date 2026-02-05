@@ -66,4 +66,7 @@ Automated duplicate detection for customer/shop records using geospatial proximi
 > - Pair 1: Khmer names share substring `"កាហ្វេភ្នំពេញ"` at 42m distance → **high-confidence duplicate**  
 > - Pair 2: English names share `"ABC Mart"` at 87m distance → **requires manual verification** (could be legitimate nearby branches)
 
+<a href="https://www.buymeacoffee.com/kevcui" target="_blank"><img src="https://media.giphy.com/media/Vuw9m5wXviFIQ/source.gif" width="280" height="auto" /></a>
+
+
 
