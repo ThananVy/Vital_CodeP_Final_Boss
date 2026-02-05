@@ -1,0 +1,13 @@
+flowchart TD
+    A[Load Excel Data] --> B{Detect GPS Format}
+    B -->|Split Columns| C[Latitude + Longitude]
+    B -->|Combined Column| D[Auto-Split 'lat,lon']
+    C --> E[Clean Coordinates]
+    D --> E
+    E --> F[Classify Secured/Unsecured]
+    F --> G{Run Comparison Mode}
+    G --> H[Build KDTree Spatial Index]
+    H --> I[Fast Distance Pre-Filter<br>~100m radius]
+    I --> J[Exact Geodesic Distance<br>Only for Candidates]
+    J --> K[Smart Name Similarity Check]
+    K --> L[Output Suspicious Pairs]
