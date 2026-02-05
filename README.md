@@ -8,10 +8,10 @@ Automated duplicate detection for customer/shop records using geospatial proximi
 
 | Column | Required | Description | Format Notes |
 |--------|----------|-------------|--------------|
-| `Customer ID` | ✅ Yes | Unique customer identifier | Text (no duplicates within source) |
-| `New Shop Name` | ✅ Yes | Shop/business name | Supports Khmer/English Unicode |
-| `Prospect Code` | ✅ Yes | Security classification field | Non-blank = **Secured**<br>Blank/NaN = **Unsecured** |
-| GPS Data | ✅ Yes | Location coordinates | **Option A:** Separate `Latitude` + `Longitude` columns<br>**Option B:** Combined column named `Mapping Coordinates`, `GPS`, `Location`, or `Coordinates` (e.g., `"11.5624, 104.9160"`) |
+| `Customer ID` | Yes | Unique customer identifier | Text (no duplicates within source) |
+| `New Shop Name` | Yes | Shop/business name | Supports Khmer/English Unicode |
+| `Prospect Code` | Yes | Security classification field | Non-blank = **Secured**<br>Blank/NaN = **Unsecured** |
+| GPS Data | Yes | Location coordinates | **Option A:** Separate `Latitude` + `Longitude` columns<br>**Option B:** Combined column named `Mapping Coordinates`, `GPS`, `Location`, or `Coordinates` (e.g., `"11.5624, 104.9160"`) |
 
 > **Critical**: All GPS values must be numeric decimals. Script auto-extracts from combined formats but fails if coordinates are missing/invalid.
 
@@ -48,10 +48,10 @@ Automated duplicate detection for customer/shop records using geospatial proximi
 | **Analysis** | `Distance (km)`, `Names Similar`, `Suspicious Duplicate`, `Comparison Type` | Verification metrics |
 
 ### Key Output Behaviors
-- ✅ **Deduplicated pairs**: Each unique pair appears only once (sorted by Customer ID)
-- ✅ **Sorted results**: Closest matches first (`Distance (km)` ascending)
-- ✅ **Audit-ready**: Full coordinate/name details for manual verification
-- ❌ **No auto-merging**: Script **flags** duplicates only — human review required before deactivation
+- **Deduplicated pairs**: Each unique pair appears only once (sorted by Customer ID)
+- **Sorted results**: Closest matches first (`Distance (km)` ascending)
+- **Audit-ready**: Full coordinate/name details for manual verification
+- **No auto-merging**: Script **flags** duplicates only — human review required before deactivation
 
 ---
 
@@ -65,4 +65,5 @@ Automated duplicate detection for customer/shop records using geospatial proximi
 > **Interpretation**:  
 > - Pair 1: Khmer names share substring `"កាហ្វេភ្នំពេញ"` at 42m distance → **high-confidence duplicate**  
 > - Pair 2: English names share `"ABC Mart"` at 87m distance → **requires manual verification** (could be legitimate nearby branches)
+
 
